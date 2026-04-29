@@ -1,0 +1,46 @@
+<nav class="navbar-custom">
+  <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+          <a routerLink="/" class="navbar-brand" (click)="closeMenu()">
+              <img src="assets/logo.png" alt="Logo" width="40px" onerror="this.src='https://ui-avatars.com/api/?name=SF&background=0a4b2a&color=fff'">
+              <span class="notranslate">SUITABLE FACILITY </span>
+          </a>
+
+          <!-- Mobile Toggle -->
+          <button class="nav-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+
+          <ul class="nav-links" [class.active]="isMenuOpen">
+              <li><a routerLink="/uae" class="nav-link" (click)="closeMenu()">{{ 'UAE_BRANCH' | translate }}</a></li>
+              <li><a routerLink="/portugal" class="nav-link" (click)="closeMenu()">{{ 'PORTUGAL_BRANCH' | translate }}</a></li>
+              
+              <!-- Language Switcher -->
+              <li class="nav-item-lang">
+                <i class="fa-solid fa-globe globe-icon"></i>
+                <div id="google_translate_element"></div>
+              </li>
+
+              <li *ngIf="!(authService.currentUser$ | async)">
+                <a routerLink="/auth/login" class="btn-premium btn-primary nav-login-btn" (click)="closeMenu()">{{ 'LOGIN' | translate }}</a>
+              </li>
+
+              <li *ngIf="authService.currentUser$ | async as user" class="user-menu">
+                <button class="user-name-btn" (click)="goToDashboard(user)">
+                  <i class="fa-solid fa-circle-user"></i> {{user.name}}
+                </button>
+
+
+                <button (click)="logout(); closeMenu()" class="btn-premium btn-outline logout-btn">
+
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+              </li>
+
+
+          </ul>
+      </div>
+  </div>
+</nav>

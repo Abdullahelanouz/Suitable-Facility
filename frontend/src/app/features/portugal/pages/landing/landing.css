@@ -1,0 +1,49 @@
+.split-hero {
+    display: flex;
+    min-height: calc(100vh - 80px); /* Adjust for navbar */
+    width: 100%;
+}
+.split-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+}
+.split-side::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1;
+    transition: background 0.5s ease;
+}
+.split-side:hover::before {
+    background: rgba(0,0,0,0.45);
+}
+.split-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 500px;
+}
+.split-client {
+    background: url('https://davepools.com/wp-content/uploads/2025/08/drainage-pipe-types.webp') no-repeat center center/cover;
+}
+.split-tech {
+    background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
+}
+.split-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+@media (max-width: 768px) {
+    .split-hero { flex-direction: column; }
+    .split-side { min-height: 50vh; }
+}

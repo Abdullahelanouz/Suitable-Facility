@@ -1,0 +1,45 @@
+<div class="auth-container">
+    <a routerLink="/" style="position: absolute; top: 30px; left: 30px; color: var(--primary); text-decoration: none; font-weight: 700;">
+        <i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+    </a>
+
+    <div class="auth-card">
+        <a routerLink="/" style="display: inline-block; margin-bottom: 30px;">
+            <img src="assets/logo.png" alt="Logo" width="60px" onerror="this.src='https://ui-avatars.com/api/?name=SF&background=0a4b2a&color=fff'">
+        </a>
+        <h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 10px;">Welcome Back</h2>
+        <p style="color: var(--slate); opacity: 0.8; font-size: 0.9rem; margin-bottom: 40px;">Sign in to access your dashboard.</p>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMsg" style="background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; padding: 12px 15px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 20px; text-align: left;">
+            <i class="fa-solid fa-circle-exclamation" style="margin-right: 8px;"></i>{{ errorMsg }}
+        </div>
+
+        <form (ngSubmit)="handleLogin()">
+            <div>
+                <label class="auth-label">Email Address</label>
+                <input type="email" [(ngModel)]="email" name="email" class="auth-input" placeholder="Enter your email" required>
+            </div>
+            <div>
+                <label class="auth-label">Password</label>
+                <input type="password" [(ngModel)]="password" name="password" class="auth-input" placeholder="Enter your password" required>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.8rem;">
+                <label style="display: flex; align-items: center; gap: 8px; color: var(--slate); cursor: pointer;">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 700;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" [disabled]="isLoading" class="btn-premium btn-primary" style="width: 100%; border: none; padding: 15px; border-radius: 8px; position: relative;">
+                <span *ngIf="!isLoading">Sign In</span>
+                <span *ngIf="isLoading"><i class="fa-solid fa-circle-notch fa-spin"></i> Signing in...</span>
+            </button>
+        </form>
+
+        <p style="margin-top: 30px; font-size: 0.85rem; color: var(--slate);">
+            Don't have an account? <a routerLink="/auth/register" style="color: var(--primary); font-weight: 700; text-decoration: none;">Register here</a>
+        </p>
+    </div>
+</div>

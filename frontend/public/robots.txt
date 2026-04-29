@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://suitablefacility.com/sitemap.xml
+
+# Disallow admin routes to avoid indexing private dashboards
+Disallow: /admin/
+Disallow: /portugal/dashboard/
+Disallow: /uae/dashboard/

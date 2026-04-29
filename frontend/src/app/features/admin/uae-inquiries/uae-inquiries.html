@@ -1,0 +1,56 @@
+<div class="admin-page">
+    <div class="header">
+        <h1>UAE Page Inquiries</h1>
+        <p>Manage bookings and contact requests from the UAE headquarters page.</p>
+    </div>
+
+    <div class="table-container">
+        <table *ngIf="!loading">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Client</th>
+                    <th>Contact Info</th>
+                    <th>Requested Service</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let inquiry of inquiries">
+                    <td>{{ inquiry.createdAt | date:'shortDate' }}</td>
+                    <td><strong>{{ inquiry.name }}</strong></td>
+                    <td>
+                        <div class="contact-details">
+                            <span *ngIf="inquiry.phone !== 'N/A'"><i class="fa-solid fa-phone"></i> {{ inquiry.phone }}</span>
+                            <span><i class="fa-solid fa-envelope"></i> {{ inquiry.email }}</span>
+                        </div>
+                    </td>
+                    <td><span class="service-badge">{{ inquiry.service }}</span></td>
+                    <td>
+                        <div class="message-cell" [title]="inquiry.message">{{ inquiry.message }}</div>
+                    </td>
+                    <td>
+                        <select [ngModel]="inquiry.status" (ngModelChange)="updateStatus(inquiry.id, $event)" [ngClass]="getStatusClass(inquiry.status)">
+                            <option value="Pending">Pending</option>
+                            <option value="Reviewed">Reviewed</option>
+                            <option value="Contacted">Contacted</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="delete-btn" (click)="deleteInquiry(inquiry.id)"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr *ngIf="inquiries.length === 0">
+                    <td colspan="7" class="empty-state">No inquiries found.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="loading" class="loader">
+            <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+        </div>
+    </div>
+</div>

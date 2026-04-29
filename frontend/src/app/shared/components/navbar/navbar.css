@@ -1,0 +1,40 @@
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.user-name-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+}
+
+.user-name-btn:hover {
+    opacity: 0.8;
+}
+
+
+.logout-btn {
+    padding: 8px 12px !important;
+    border-radius: 10px !important;
+    font-size: 0.9rem !important;
+    border: 1px solid var(--gray-med) !important;
+    background: transparent !important;
+    color: var(--slate) !important;
+}
+
+.logout-btn:hover {
+    background: #fee2e2 !important;
+    color: #ef4444 !important;
+    border-color: #fecaca !important;
+}

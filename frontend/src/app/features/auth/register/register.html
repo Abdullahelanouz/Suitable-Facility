@@ -1,0 +1,95 @@
+<div class="auth-container">
+    <a routerLink="/" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> {{ 'BACK_TO_HOME' | translate }}
+    </a>
+
+    <div class="auth-card">
+        <div class="auth-header">
+            <a routerLink="/" class="auth-logo">
+                <img src="assets/logo.png" alt="Logo" width="70px" onerror="this.src='https://ui-avatars.com/api/?name=SF&background=0a4b2a&color=fff'">
+            </a>
+            <h2 class="auth-title">{{ 'CREATE_ACCOUNT' | translate }}</h2>
+            <p class="auth-subtitle">{{ 'JOIN_NETWORK' | translate }}</p>
+        </div>
+
+        <form (ngSubmit)="handleRegister()" #registerForm="ngForm">
+            <div class="form-group">
+                <label class="auth-label">{{ 'FULL_NAME' | translate }}</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" [(ngModel)]="name" name="name" class="auth-input with-icon" [placeholder]="'ENTER_FULL_NAME' | translate" required #nameInput="ngModel">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="auth-label">{{ 'EMAIL_ADDRESS' | translate }}</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" [(ngModel)]="email" name="email" class="auth-input with-icon" [placeholder]="'ENTER_EMAIL' | translate" required email #emailInput="ngModel">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="auth-label">{{ 'PASSWORD' | translate }}</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" [(ngModel)]="password" name="password" class="auth-input with-icon" [placeholder]="'CREATE_PASSWORD' | translate" required minlength="6" #passwordInput="ngModel">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="auth-label">Phone Number</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-phone input-icon"></i>
+                    <input type="tel" [(ngModel)]="phone" name="phone" class="auth-input with-icon" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="auth-label">Location / Address</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-location-dot input-icon"></i>
+                    <input type="text" [(ngModel)]="location" name="location" class="auth-input with-icon" placeholder="Enter your location" required>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 25px;">
+                <label class="auth-label">{{ 'I_AM_A' | translate }}</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-users input-icon"></i>
+                    <select [(ngModel)]="role" name="role" class="auth-input with-icon" style="cursor: pointer; appearance: none;">
+                        <option value="Client">{{ 'CLIENT_DESC' | translate }}</option>
+                        <option value="Technician">{{ 'TECHNICIAN_DESC' | translate }}</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <!-- Technician Specific Fields -->
+            <div *ngIf="role === 'Technician'" class="tech-fields">
+                <div class="form-group">
+                    <label class="auth-label">Years of Experience</label>
+                    <input type="number" [(ngModel)]="experience" name="experience" class="auth-input" placeholder="e.g. 5" required>
+                </div>
+                <div class="form-group">
+                    <label class="auth-label">Hourly Rate (€)</label>
+                    <input type="number" [(ngModel)]="hourlyRate" name="hourlyRate" class="auth-input" placeholder="e.g. 45" required>
+                </div>
+                <div class="form-group">
+                    <label class="auth-label">Profile Image</label>
+                    <input type="file" (change)="onFileSelected($event)" class="auth-input" accept="image/*" style="padding-top: 10px;">
+                    <div *ngIf="avatar" class="preview-text">Image uploaded!</div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn-premium btn-primary auth-submit" [disabled]="!registerForm.form.valid">
+                {{ 'CREATE_ACCOUNT' | translate }}
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>{{ 'ALREADY_HAVE_ACCOUNT' | translate }} <a routerLink="/auth/login" class="auth-link">{{ 'SIGN_IN' | translate }}</a></p>
+        </div>
+    </div>
+</div>

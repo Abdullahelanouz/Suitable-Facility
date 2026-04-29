@@ -1,0 +1,82 @@
+.page-header {
+    margin-bottom: 40px;
+}
+
+.header-main h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.header-main p {
+    color: var(--slate);
+    opacity: 0.7;
+}
+
+/* Table Styles */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    padding: 15px 20px;
+    background: #f8fafc;
+    color: var(--slate);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.admin-table td {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.status-pill {
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.status-pill.pending { background: #fef9c3; color: #854d0e; }
+.status-pill.confirmed { background: #dcfce7; color: #166534; }
+.status-pill.completed { background: #e0f2fe; color: #0369a1; }
+.status-pill.cancelled { background: #fee2e2; color: #991b1b; }
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f1f5f9;
+    color: var(--slate);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-icon:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-icon.check:hover {
+    background: #10b981;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-main h1 { font-size: 1.5rem; }
+    .admin-table th, .admin-table td { padding: 10px; font-size: 0.85rem; }
+}

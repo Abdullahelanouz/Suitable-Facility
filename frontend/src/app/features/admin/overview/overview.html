@@ -1,0 +1,96 @@
+<div class="overview-container">
+    <div class="page-header">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome back! Here's what's happening with Suitable Facility today.</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <div *ngFor="let s of stats" class="stat-card">
+            <div class="stat-icon" [style.background-color]="s.color + '20'" [style.color]="s.color">
+                <i class="fa-solid" [ngClass]="s.icon"></i>
+            </div>
+            <div class="stat-info">
+                <h3>{{ s.value }}</h3>
+                <p>{{ s.label }}</p>
+            </div>
+            <div class="stat-trend" [class.up]="s.trend.startsWith('+')">
+                {{ s.trend }}
+            </div>
+        </div>
+    </div>
+
+    <div class="overview-content">
+        <!-- Recent Activity -->
+        <div class="admin-card activity-card">
+            <div class="card-header">
+                <h2>Recent Activity</h2>
+                <button class="btn-text">View All</button>
+            </div>
+            <div class="activity-list">
+                <div *ngFor="let act of recentActivities" class="activity-item">
+                    <div class="act-avatar">
+                        {{ act.user.charAt(0) }}
+                    </div>
+                    <div class="act-details">
+                        <strong>{{ act.user }}</strong>
+                        <span>{{ act.action }}</span>
+                    </div>
+                    <div class="act-meta">
+                        <span class="act-time">{{ act.time }}</span>
+                        <span class="status-badge" [ngClass]="act.status.toLowerCase()">{{ act.status }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="admin-card quick-actions">
+            <div class="card-header">
+                <h2>Quick Actions</h2>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-action" (click)="addTechnician()">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Add Technician
+                </button>
+                <button class="btn-action" (click)="exportReport()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export Report
+                </button>
+                <button class="btn-action" (click)="openSettings()">
+                    <i class="fa-solid fa-gear"></i>
+                    System Settings
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Technician Modal -->
+<div class="modal-overlay" *ngIf="showAddTechModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Technician</h3>
+            <button class="btn-close" (click)="showAddTechModal = false">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" [(ngModel)]="newTech.name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" [(ngModel)]="newTech.email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label>Access Role</label>
+                <input type="text" value="Technician" disabled>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" (click)="showAddTechModal = false">Cancel</button>
+            <button class="btn-save" (click)="saveTechnician()">Save Technician</button>
+        </div>
+    </div>
+</div>

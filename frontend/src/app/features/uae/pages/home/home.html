@@ -1,0 +1,194 @@
+<!-- Hero Section -->
+<header class="uae-hero">
+    <div class="container">
+        <div class="hero-content">
+            <span class="section-subtitle" style="color: rgba(255,255,255,0.8);">United Arab Emirates Branch</span>
+            <h1>ENGINEERING EXCELLENCE WITH INTEGRITY</h1>
+            <p>We provide our expertise in providing the best suitable solutions for your facility that are commensurate with your requirements and comply with the highest engineering standards.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#contact-uae" class="btn-premium btn-primary" style="background: white; color: var(--primary);">Contact UAE Office</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section class="section-padding reveal" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <span class="section-subtitle">About Us</span>
+                <h2 class="section-title">SUITABLE FACILITY FZE</h2>
+                <p style="margin-bottom: 20px; font-size: 0.95rem; color: var(--slate); line-height: 1.8;">
+                    We <strong>SUITABLE FACILITY</strong> provide our expertise in providing the best suitable solutions for your facility that are commensurate with your requirements and comply with the highest engineering standards according to the scope and location, taking into account the customer's requirements and the costs that suit him.
+                </p>
+                <p style="color: var(--slate); opacity: 0.8; font-size: 0.95rem; line-height: 1.8;">
+                    Not every facility has to be identical to the other without regard to the real requirements of the client. Through our different experiences and previous expertise.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=800&auto=format&fit=crop" alt="Suitable Facility UAE"
+                     onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800'">
+                <div class="floating-badge">
+                    <h3>25+</h3>
+                    <p style="color: white; margin-bottom: 0;">YEARS OF MARKET<br>LEADERSHIP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="section-padding reveal bg-light">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-subtitle">Our Expertise</span>
+            <h2 class="section-title">Integrated MEP & Civil Solutions</h2>
+        </div>
+        <div class="home-service-grid">
+            <div class="home-service-card">
+                <i class="fa-solid fa-fan"></i>
+                <h4>MEP Systems</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7; line-height: 1.6; margin-top: 15px;">Comprehensive mechanical, electrical, and plumbing engineering tailored to your facility's operational needs.</p>
+            </div>
+            <div class="home-service-card">
+                <i class="fa-regular fa-snowflake"></i>
+                <h4>District Cooling</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7; line-height: 1.6; margin-top: 15px;">Advanced thermal energy networks and pumping stations optimized for harsh regional climates.</p>
+            </div>
+            <div class="home-service-card">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <h4>Interior Fit-out</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7; line-height: 1.6; margin-top: 15px;">Precision-crafted spaces integrating complex technical infrastructure seamlessly into aesthetic designs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Section -->
+<section class="section-padding reveal video-section">
+    <div class="container">
+        <div class="section-grid">
+            <div>
+                <span class="section-subtitle" style="color: rgba(255,255,255,0.6);">Technical Showcase</span>
+                <h2 class="section-title" style="color: white;">Infrastructure & Water Engineering</h2>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px; line-height: 1.8;">
+                    Experience our surgical precision in large-scale infrastructure projects. From GRP water tank installations to complex pumping stations, we deliver solutions that redefine industrial standards.
+                </p>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/2bnPLpBP-T8?si=EN79nPf-ohKfKbJY" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detailed Services Grid -->
+<section class="section-padding reveal bg-light" id="detailed-services">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-subtitle">Comprehensive Solutions</span>
+            <h2 class="section-title">Our Specialized Services</h2>
+            <p style="color: var(--slate); max-width: 600px; margin: 0 auto;">Select any of our specialized engineering and facility management services below to book a consultation or execution.</p>
+        </div>
+
+        <div class="uae-services-grid">
+            <div *ngFor="let srv of services" class="uae-service-card">
+                <img [src]="srv.img" [alt]="srv.title">
+                <div class="card-body">
+                    <h3 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 15px; font-weight: 800;">{{srv.title}}</h3>
+                    <ul>
+                        <li *ngFor="let item of srv.items">{{item}}</li>
+                    </ul>
+                    <button (click)="openBookingModal(srv.title)" class="btn-premium btn-primary" style="width: 100%; padding: 12px; border: none; border-radius: 8px;">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Documents -->
+<section class="section-padding reveal" style="background: white;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-subtitle">Legal & Compliance</span>
+            <h2 class="section-title">Company Documents</h2>
+            <p style="color: var(--slate); max-width: 600px; margin: 0 auto;">Access our official registration certificates, notary records, and compliance documents.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <a *ngFor="let doc of documents" [href]="doc.url" target="_blank" class="doc-card">
+                <i class="fa-solid {{doc.icon}}" [style.color]="doc.iconColor" style="font-size: 3rem; margin-bottom: 20px; display: block;"></i>
+                <h4 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 10px;">{{doc.title}}</h4>
+                <span style="color: var(--accent); font-size: 0.85rem; font-weight: 700;">View Document <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section-padding reveal" id="contact-uae">
+    <div class="container">
+        <div class="contact-grid">
+            <div>
+                <h2 class="section-title">Get in Touch</h2>
+                <p style="opacity: 0.7; margin-bottom: 40px;">Contact our UAE headquarters for MEP design, civil works, or facility partnerships.</p>
+
+                <div class="card-premium" style="background: #f8fafc; border: none; height: 250px;">
+                    <div style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="background: var(--primary); color: white; padding: 15px; border-radius: 10px; font-size: 1.2rem;">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0 0 10px 0; font-size: 1.3rem;">Sharjah Headquarters</h4>
+                            <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 10px;"><i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 10px;"></i> Sharjah Research Technology and Innovation Park (SRTIP)</p>
+                            <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 10px;"><i class="fa-solid fa-phone" style="color: var(--accent); margin-right: 10px;"></i> +971 564 940 635</p>
+                            <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 0;"><i class="fa-solid fa-envelope" style="color: var(--accent); margin-right: 10px;"></i> suitablefacility&#64;gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 40px; border-radius: 20px;" class="reveal-right">
+                <form (ngSubmit)="submitGeneralInquiry()">
+                    <input type="text" [(ngModel)]="contactForm.name" name="cname" class="contact-input" placeholder="Your Name" required>
+                    <input type="email" [(ngModel)]="contactForm.email" name="cemail" class="contact-input" placeholder="Your Email" required>
+                    <textarea [(ngModel)]="contactForm.message" name="cmessage" class="contact-input" placeholder="Message" style="height: 150px; resize: none;" required></textarea>
+                    <button type="submit" class="btn-premium btn-primary" [disabled]="isSubmitting" style="width: 100%; border: none; padding: 15px;">
+                        {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Modal -->
+<div class="booking-modal" [class.active]="bookingModalActive">
+    <div class="booking-modal-content">
+        <i class="fa-solid fa-xmark" (click)="closeBookingModal()" style="position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--slate);"></i>
+
+        <div *ngIf="bookingSuccess" class="success-msg">
+            <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 3rem;"></i>
+            <h3 style="color: var(--primary); margin: 15px 0 10px;">Request Submitted!</h3>
+            <p style="color: var(--slate);">Thank you! Our team will contact you shortly regarding <strong>{{selectedService}}</strong>.</p>
+        </div>
+
+        <div *ngIf="!bookingSuccess">
+            <h2 style="color: var(--primary); margin-bottom: 5px;">Book Service</h2>
+            <p style="color: var(--slate); margin-bottom: 25px; font-size: 0.9rem;">You are requesting: <strong style="color: var(--accent);">{{selectedService}}</strong></p>
+
+            <form (ngSubmit)="confirmBooking($event)">
+                <input type="text" [(ngModel)]="form.name" name="name" class="modal-input" placeholder="Your Name" required>
+                <input type="tel" [(ngModel)]="form.phone" name="phone" class="modal-input" placeholder="Phone Number" required>
+                <input type="email" [(ngModel)]="form.email" name="email" class="modal-input" placeholder="Email Address" required>
+                <textarea [(ngModel)]="form.message" name="message" class="modal-input" style="height: 100px; resize: none;" placeholder="Provide brief details about your requirement..." required></textarea>
+                <button type="submit" class="btn-premium btn-primary" [disabled]="isSubmitting" style="width: 100%; border: none; padding: 15px; border-radius: 8px;">
+                    {{ isSubmitting ? 'Submitting...' : 'Submit Booking Request' }}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

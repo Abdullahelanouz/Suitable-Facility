@@ -1,0 +1,48 @@
+<div class="admin-page">
+    <div class="header">
+        <h1>General Messages</h1>
+        <p>Manage general contact inquiries from the website.</p>
+    </div>
+
+    <div class="table-container">
+        <table *ngIf="!loading">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let msg of contacts">
+                    <td>{{ msg.createdAt | date:'shortDate' }}</td>
+                    <td><strong>{{ msg.name }}</strong></td>
+                    <td>{{ msg.email }}</td>
+                    <td>
+                        <div class="message-cell" [title]="msg.message">{{ msg.message }}</div>
+                    </td>
+                    <td>
+                        <select [ngModel]="msg.status" (ngModelChange)="updateStatus(msg.id, $event)" [ngClass]="getStatusClass(msg.status)">
+                            <option value="Unread">Unread</option>
+                            <option value="Read">Read</option>
+                            <option value="Replied">Replied</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="delete-btn" (click)="deleteContact(msg.id)"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr *ngIf="contacts.length === 0">
+                    <td colspan="6" class="empty-state">No messages found.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="loading" class="loader">
+            <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+        </div>
+    </div>
+</div>

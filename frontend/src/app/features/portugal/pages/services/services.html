@@ -1,0 +1,27 @@
+<div style="background: white; padding: 60px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container text-center">
+        <h1 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 15px;">What do you need help with?</h1>
+        <p style="color: var(--slate); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px auto;">Select a service category below to browse our network of vetted, certified technicians ready to execute your project.</p>
+        
+        <div style="max-width: 500px; margin: 0 auto; position: relative;">
+            <i class="fa-solid fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--slate); opacity: 0.5;"></i>
+            <input type="text" placeholder="Search for a service..." style="width: 100%; padding: 15px 20px 15px 50px; border-radius: 50px; border: 1px solid var(--gray-med); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding: 60px 0 100px 0;">
+    <div *ngIf="isLoading" class="text-center">Loading services...</div>
+    
+    <div class="service-marketplace-grid" *ngIf="!isLoading">
+        <a *ngFor="let srv of services" [routerLink]="['/portugal/technicians']" [queryParams]="{service: srv.name_en}" class="service-cat-card">
+            <div class="service-cat-icon"><i class="fa-solid {{ srv.icon }}"></i></div>
+            <h3 class="service-cat-title">{{ srv.name_en }}</h3>
+            <p class="service-cat-desc">{{ srv.description || 'Professional services for your facility maintenance needs.' }}</p>
+            <div class="service-cat-meta">
+                <span><i class="fa-solid fa-users"></i> {{ srv.techsCount }} Techs Available</span>
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+        </a>
+    </div>
+</div>

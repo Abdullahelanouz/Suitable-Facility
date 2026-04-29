@@ -1,0 +1,225 @@
+  html { scroll-behavior: smooth; }
+
+/* ===== Hero ===== */
+.uae-hero {
+    background: var(--grad-overlay), url('https://images.unsplash.com/photo-1541888941295-1e8dbb0a946d?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover; min-height: 60vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    height: 100vh;
+      min-height: 700px;
+}
+.uae-hero .hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.uae-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: var(--white);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+.section-subtitle {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+/* ===== Service Cards ===== */
+.uae-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+.uae-service-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.uae-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+.uae-service-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.uae-service-card .card-body {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.uae-service-card ul {
+    font-size: 0.85rem;
+    color: var(--slate);
+    padding-left: 20px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* ===== Documents ===== */
+.doc-card {
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: block;
+    padding: 35px 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.doc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* ===== Video section ===== */
+.video-section {
+    background: #064e3b;
+    color: white;
+}
+.video-section .section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.video-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+    aspect-ratio: 16/9;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+}
+
+/* ===== Contact Form ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+.contact-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--gray-med);
+    border-radius: 8px;
+    font-family: var(--font-main);
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+.contact-input:focus { border-color: var(--primary); }
+
+/* ===== Booking Modal ===== */
+.booking-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+.booking-modal.active { display: flex; }
+.booking-modal-content {
+    background: white;
+    padding: 45px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.modal-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gray-med);
+    border-radius: 8px;
+    font-family: var(--font-main);
+    margin-bottom: 15px;
+    outline: none;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+.modal-input:focus { border-color: var(--primary); }
+.success-msg {
+    text-align: center;
+    padding: 20px;
+}
+.success-msg i { font-size: 3rem; color: #10b981; margin-bottom: 15px; }
+
+/* ===== Reveal Animation ===== */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* ===== Home service grid ===== */
+.home-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.home-service-card {
+    background: var(--primary);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+.home-service-card h4{
+    color: var(--accent-light) !important;
+    
+}
+.home-service-card p{
+    color: #000;
+    
+}
+.home-service-card i { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-light); }
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .uae-hero { height: auto; padding: 120px 0; min-height: 500px; }
+    .uae-hero h1 { font-size: 3rem; }
+    .uae-services-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .video-section .section-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .home-service-grid { grid-template-columns: 1fr; }
+    .uae-hero h1 { font-size: 2.2rem; }
+    .uae-hero .hero-content { padding: 0 20px; }
+    .booking-modal-content { padding: 30px 20px; width: 95%; }
+}
+

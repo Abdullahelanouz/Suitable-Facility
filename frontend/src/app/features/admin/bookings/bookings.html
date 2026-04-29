@@ -1,0 +1,47 @@
+<div class="bookings-container">
+    <div class="page-header">
+        <div class="header-main">
+            <h1>Booking Management</h1>
+            <p>Monitor and update service requests from clients.</p>
+        </div>
+    </div>
+
+    <div class="admin-card">
+        <div class="table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Client</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bk of bookings">
+                        <td><small>{{ bk.id.substring(0, 8) }}...</small></td>
+                        <td>
+                            <strong>{{ bk.client?.name || bk.clientName || 'Guest' }}</strong>
+                            <div style="font-size: 0.75rem; opacity: 0.6;">{{ bk.client?.email || bk.clientEmail }}</div>
+                        </td>
+                        <td><span class="service-tag">{{ bk.service }}</span></td>
+                        <td>{{ bk.createdAt | date:'shortDate' }}</td>
+                        <td>$120</td>
+                        <td>
+                            <span class="status-pill" [ngClass]="bk.status.toLowerCase()">{{ bk.status }}</span>
+                        </td>
+                        <td>
+                            <div class="table-actions">
+                                <button *ngIf="bk.status === 'Pending'" class="btn-icon check" (click)="updateStatus(bk.id, 'Confirmed')" title="Confirm"><i class="fa-solid fa-check"></i></button>
+                                <button class="btn-icon" title="Details"><i class="fa-solid fa-eye"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

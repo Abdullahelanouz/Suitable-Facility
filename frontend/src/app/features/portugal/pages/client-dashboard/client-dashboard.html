@@ -1,0 +1,64 @@
+<div class="dashboard-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a routerLink="/" class="nav-item" style="color: var(--primary); margin-bottom: 20px;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+        <a routerLink="/portugal/dashboard/client" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+            <i class="fa-solid fa-house"></i> Overview
+        </a>
+        <a routerLink="/portugal/dashboard/client/requests" routerLinkActive="active" class="nav-item">
+            <i class="fa-solid fa-clipboard-list"></i> My Requests
+        </a>
+
+        <a routerLink="/portugal/dashboard/client/settings" routerLinkActive="active" class="nav-item">
+
+            <i class="fa-solid fa-gear"></i> Settings
+        </a>
+        <a routerLink="/auth/login" class="nav-item" (click)="authService.logout()" style="margin-top: 50px; color: #ef4444;">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Dashboard Overview (only shown when on the root dashboard path) -->
+        <ng-container *ngIf="router.url === '/portugal/dashboard/client'">
+            <h1 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 5px;">
+                Welcome back, {{ (authService.currentUser$ | async)?.name }}!
+            </h1>
+            <p style="color: var(--slate); margin-bottom: 30px;">Here is the overview of your service requests.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                <div class="stat-card">
+                    <div style="color: var(--slate); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Active Jobs</div>
+                    <div style="font-size: 2rem; color: var(--primary); font-weight: 800;">{{ activeCount }}</div>
+                </div>
+                <div class="stat-card">
+                    <div style="color: var(--slate); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Pending Approval</div>
+                    <div style="font-size: 2rem; color: #f59e0b; font-weight: 800;">{{ pendingCount }}</div>
+                </div>
+                <div class="stat-card">
+                    <div style="color: var(--slate); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Completed Jobs</div>
+                    <div style="font-size: 2rem; color: var(--accent); font-weight: 800;">{{ completedCount }}</div>
+                </div>
+            </div>
+
+            <h2 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 20px;">Recent Requests</h2>
+            <div *ngIf="isLoading">Loading...</div>
+            <div *ngFor="let job of bookings.slice(0,3)" class="job-card">
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div class="job-icon"><i class="fa-solid fa-wrench"></i></div>
+                    <div>
+                        <h4 style="margin: 0; color: var(--primary);">{{ job.service }}</h4>
+                        <p style="margin: 0; color: var(--slate); font-size: 0.85rem;">{{ job.scheduledDate | date }}</p>
+                    </div>
+                </div>
+                <span class="status-badge" [ngClass]="'status-' + job.status.toLowerCase()">{{ job.status }}</span>
+            </div>
+        </ng-container>
+
+        <!-- Sub-pages Content -->
+        <router-outlet></router-outlet>
+    </div>
+</div>

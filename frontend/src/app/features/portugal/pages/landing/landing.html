@@ -1,0 +1,29 @@
+<div class="split-hero">
+    <!-- Left: Client / Request Service -->
+    <div class="split-side split-client">
+        <div class="split-content">
+            <i class="fa-solid fa-screwdriver-wrench" style="font-size: 3rem; margin-bottom: 20px; color: var(--accent);"></i>
+            <h1 class="split-title">Need a Professional?</h1>
+            <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; opacity: 0.9;">
+                Access Portugal's premier network of certified MEP, HVAC, and civil engineering technicians. Get your facility running perfectly.
+            </p>
+            <a routerLink="/portugal/services" class="btn-premium btn-primary" style="background: var(--accent); border: none; padding: 15px 40px; font-size: 1.1rem; border-radius: 5px; color: white;">
+                Request a Service <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Right: Technician / Register -->
+    <div class="split-side split-tech">
+        <div class="split-content">
+            <i class="fa-solid fa-helmet-safety" style="font-size: 3rem; margin-bottom: 20px; color: var(--accent-light);"></i>
+            <h1 class="split-title">Join the Network</h1>
+            <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; opacity: 0.9;">
+                Are you a skilled technician? Partner with Suitable Facility to access high-quality corporate and residential jobs across Portugal.
+            </p>
+            <a routerLink="/auth/register" [queryParams]="{type: 'tech'}" class="btn-premium btn-outline" style="border-color: white; color: white; padding: 15px 40px; font-size: 1.1rem; border-radius: 5px; background: rgba(255,255,255,0.1);">
+                Register as Technician <i class="fa-solid fa-user-plus" style="margin-left: 10px;"></i>
+            </a>
+        </div>
+    </div>
+</div>

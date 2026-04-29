@@ -1,0 +1,68 @@
+<div class="users-container">
+    <div class="page-header">
+        <div class="header-main">
+            <h1>User Management</h1>
+            <p>View and manage all registered clients and technicians.</p>
+        </div>
+        <button class="btn-premium btn-primary">
+            <i class="fa-solid fa-plus"></i> Add New User
+        </button>
+    </div>
+
+    <div class="admin-card">
+        <div class="table-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search users...">
+            </div>
+            <div class="filter-box">
+                <select>
+                    <option value="">All Roles</option>
+                    <option value="Client">Clients</option>
+                    <option value="Technician">Technicians</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>
+                            <div class="user-info">
+                                <div class="avatar-small">{{ user.name.charAt(0) }}</div>
+                                <div class="details">
+                                    <span class="name">{{ user.name }}</span>
+                                    <span class="email">{{ user.email }}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="role-badge" [ngClass]="user.role.toLowerCase()">{{ user.role }}</span>
+                        </td>
+                        <td>
+                            <span class="status-dot" [ngClass]="user.status.toLowerCase()"></span>
+                            {{ user.status }}
+                        </td>
+                        <td>{{ user.joined }}</td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="btn-icon" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="btn-icon delete" (click)="deleteUser(user.email)" title="Delete"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
